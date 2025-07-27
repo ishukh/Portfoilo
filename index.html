@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ishwari Khutikar • Web Developer & Python Expert</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0f0f13;
+      --fg: #f8fafc;
+      --muted: #cbd5e1;
+      --primary: #6c47ff;   /* purple */
+      --accent: #ffc857;    /* warm yellow */
+      --card: #17171e;
+      --border: #262633;
+      --radius: 18px;
+      --shadow: 0 20px 40px -20px rgba(0,0,0,.4);
+      --max-w: 1120px;
+      --transition: all .25s ease;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.65;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    a:hover { opacity: .9; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Nav */
+    nav {
+      position: sticky;
+      top: 0; z-index: 999;
+      background: rgba(15,15,19,.6);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      height: 70px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand {
+      font-weight: 600; letter-spacing: -0.01em;
+    }
+    .menu {
+      display: flex; gap: 1.2rem;
+    }
+    .menu a {
+      color: var(--muted); font-size: .95rem;
+    }
+    .menu a:hover { color: var(--fg); }
+
+    .burger {
+      display: none; background: transparent; border: 0; color: var(--fg); font-size: 1.5rem; cursor: pointer;
+    }
+
+    /* Hero */
+    header {
+      padding: 140px 0 110px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before,
+    header::after {
+      content: "";
+      position: absolute;
+      width: 580px;
+      height: 580px;
+      border-radius: 50%;
+      filter: blur(140px);
+      opacity: .28;
+      z-index: 1;
+    }
+    header::before {
+      background: var(--primary);
+      top: -120px; left: -180px;
+    }
+    header::after {
+      background: var(--accent);
+      bottom: -160px; right: -160px;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .tag {
+      display: inline-block;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      color: var(--accent);
+      font-size: .85rem;
+      padding: .3rem .8rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      margin: 0 0 .6rem;
+      font-size: clamp(2.1rem, 6vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .hero p {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 1rem 0 2rem;
+      font-size: 1.1rem;
+    }
+    .hero-actions {
+      display: flex; flex-wrap: wrap; gap: .75rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      gap: .35rem;
+      padding: .9rem 1.35rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 500;
+      font-size: .97rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 6px 20px -8px rgba(108,71,255,.8);
+    }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--fg);
+      border-color: var(--border);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.04); }
+
+    .profile-wrap {
+      display: flex; justify-content: center;
+    }
+    .profile-pic {
+      width: 300px; height: 300px; border-radius: 50%; object-fit: cover;
+      border: 4px solid rgba(255,255,255,.08);
+      box-shadow: 0 0 0 0 rgba(255,200,87,.3);
+      animation: pulse 3s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255,200,87,.25); }
+      70% { box-shadow: 0 0 0 35px rgba(255,200,87,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,200,87,0); }
+    }
+
+    section {
+      padding: 96px 0;
+    }
+    .section-muted {
+      background: linear-gradient(180deg, rgba(255,255,255,.015) 0%, rgba(255,255,255,0) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      margin: 0 0 1.2rem;
+      font-weight: 600;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.6rem 1.5rem;
+      transition: var(--transition);
+    }
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .skills-list {
+      display: flex; flex-wrap: wrap; gap: .55rem;
+    }
+    .chip {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 999px;
+      padding: .35rem .75rem;
+      font-size: .85rem; font-weight: 500;
+      color: var(--muted);
+    }
+
+    .project-img {
+      width: 100%; border-radius: 12px;
+      aspect-ratio: 16 / 9; object-fit: cover;
+      margin: 1rem 0 1rem;
+      border: 1px solid rgba(255,255,255,.06);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .project-card:hover .project-img {
+      transform: scale(1.02);
+    }
+
+    ul {
+      padding-left: 1.1rem;
+      color: var(--muted);
+    }
+
+    form {
+      display: grid; gap: 1rem; max-width: 640px; margin: 0 auto;
+    }
+    input, textarea {
+      width: 100%; background: #101015;
+      color: var(--fg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: .95rem 1rem;
+      font-family: inherit; font-size: 1rem;
+      transition: var(--transition);
+    }
+    input:focus, textarea:focus {
+      outline: none; border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(108,71,255,.12);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    /* Scroll reveal base */
+    .reveal {
+      opacity: 0; transform: translateY(18px);
+      transition: .7s ease;
+    }
+    .reveal.active {
+      opacity: 1; transform: none;
+    }
+
+    /* Responsive */
+    @media (min-width: 960px) {
+      .hero {
+        grid-template-columns: 1.1fr 0.9fr;
+        text-align: left;
+      }
+      .hero-actions { justify-content: flex-start; }
+      header { padding: 170px 0 130px; }
+    }
+
+    @media (max-width: 860px) {
+      .menu {
+        position: absolute;
+        top: 70px; right: 0; left: 0;
+        flex-direction: column; align-items: center;
+        background: #0f0f13;
+        border-bottom: 1px solid var(--border);
+        display: none; padding: 1rem 0;
+      }
+      .menu.open { display: flex; }
+      .burger { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <div class="brand">Ishwari Khutikar</div>
+      <button class="burger" id="burger" aria-label="Open menu">☰</button>
+      <div class="menu" id="menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home">
+    <div class="container hero">
+      <div class="hero-content reveal">
+        <span class="tag">B.Sc. IT (2025) • CGPA 9.5 • Web Developer & Python Expert</span>
+        <h1>Hi, I’m <span style="color: var(--accent)">Ishwari Khutikar</span>.</h1>
+        <p>
+          I build user-friendly, modern, and scalable web applications. Python is my strongest suit, and I’m equally comfortable with HTML, CSS, Java, SQL, and the web stack. I love turning ideas into clean, responsive, real products.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View My Work</a>
+          <a class="btn btn-outline" href="#contact">Contact Me</a>
+          <a class="btn btn-outline" href="C:\Users\ishwa\Downloads\Copy of Ishwari_Resume (1).pdf" download>Download CV</a>
+        </div>
+      </div>
+      <div class="profile-wrap reveal">
+        <!-- Replace this with your real profile image -->
+        <img class="profile-pic" src="C:\Users\ishwa\OneDrive\Pictures\Documents\profile img.jpg" alt="Profile of Ishwari Khutikar">
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container reveal">
+      <h2>About Me</h2>
+      <div class="card">
+        <p>
+          I’m a B.Sc. IT graduate (Mumbai University, 2025) with a CGPA of 9.5. I enjoy building clean and practical solutions with a focus on performance and usability. My goal is to work on products that actually help people — with solid engineering and simple UX.
+        </p>
+
+        <div class="grid" style="margin-top: 1.5rem;">
+          <div class="card" style="background: transparent; box-shadow: none; border: 1px dashed var(--border);">
+            <h3 style="margin-top: 0;">Education</h3>
+            <ul>
+              <li><strong>B.Sc. IT</strong> — Mumbai University (2025), CGPA 9.5</li>
+              <li><strong>12th</strong> — Maharashtra Board, 83.33%</li>
+              <li><strong>10th</strong> — Maharashtra Board, 69.80%</li>
+            </ul>
+          </div>
+          <div class="card" style="background: transparent; box-shadow: none; border: 1px dashed var(--border);">
+          <h3 style="margin-top: 0;">Looking for</h3>
+          <p>Frontend / Python Developer roles, internships, or full-time opportunities where I can ship and grow fast.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section-muted">
+    <div class="container reveal">
+      <h2>Skills</h2>
+      <p style="color: var(--muted); margin-bottom: 1rem;">Tech I’m comfortable and productive with:</p>
+      <div class="skills-list">
+        <span class="chip">Python (Expert)</span>
+        <span class="chip">HTML</span>
+        <span class="chip">CSS</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">Java</span>
+        <span class="chip">SQL</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="reveal">Projects</h2>
+
+      <div class="grid" style="margin-top: 1.5rem;">
+        <!-- Campaign Portal -->
+        <article class="card project-card reveal">
+          <h3>Campaign Portal (Django)</h3>
+          <p style="color: var(--muted);">
+            A full-featured web platform to manage blood donation, healthcare, and fundraising campaigns. It supports category-wise flows, duration tracking, charity goal tracking, and transparent fund allocation — all wrapped in a simple and clean UI to make it easy for users.
+          </p>
+          <ul>
+            <li>Dynamic, category-based pages & goal tracking</li>
+            <li>Simple UX using HTML/CSS templates</li>
+            <li>Django-powered backend with SQLite</li>
+          </ul>
+          <p><strong>Tech Stack:</strong> Django, Python, HTML, CSS, SQLite</p>
+          <!-- Replace with your real screenshot -->
+          <img class="project-img" src="C:\Users\ishwa\OneDrive\Pictures\Screenshots\Screenshot 2025-07-27 183750.png" alt="Campaign Portal Screenshot">
+        </article>
+
+        <!-- Library Management System -->
+        <article class="card project-card reveal">
+          <h3>Library Management System (Java)</h3>
+          <p style="color: var(--muted);">
+            A desktop application to streamline core library operations like book issue/return, member & staff management, and fine calculation. Built with Java Swing for a straightforward GUI and MySQL for reliable data handling.
+          </p>
+          <ul>
+            <li>CRUD for books, members, and staff</li>
+            <li>Fine calculation & transaction logs</li>
+            <li>Fast, simple Swing-based UI</li>
+          </ul>
+          <p><strong>Tech Stack:</strong> Java (Swing), MySQL</p>
+          <!-- Replace with your real screenshot -->
+          <img class="project-img" src="C:\Users\ishwa\OneDrive\Pictures\Screenshots\Screenshot 2025-07-27 180447.png" alt="Library Management System Screenshot">
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section-muted">
+    <div class="container reveal">
+      <h2>Contact</h2>
+      <p style="color: var(--muted); margin-bottom: 1.25rem;">
+        Want to discuss an opportunity or a project? Ping me — I reply fast.
+      </p>
+
+      <div class="card" style="margin-bottom: 2rem;">
+        <p><strong>Email:</strong> <a href="mailto:ishwarikhutikar0712@gmail.com">ishwarikhutikar0712@gmail.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+919372532898">+91 93725 32898</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/ishwarikhutikar" target="_blank" rel="noopener noreferrer">linkedin.com/in/ishwarikhutikar</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/ishukh" target="_blank" rel="noopener noreferrer">github.com/ishukh</a></p>
+      </div>
+
+      <!-- (Optional) Working form requires backend or service -->
+      <form onsubmit="event.preventDefault(); alert('Form submitted (placeholder). Hook me to EmailJS/Formspree to make it live.');">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Email address" required />
+        <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+        <button class="btn btn-primary" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Ishwari Khutikar — All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    burger.addEventListener('click', () => menu.classList.toggle('open'));
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('active');
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
